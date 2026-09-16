@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import express from 'express';
@@ -21,8 +22,16 @@ app.use('/api', apiRoutes);
 
 // In production the server also serves the built React app
 if (env.isProduction) {
-  app.use(express.static(clientDist));
-  app.get('/{*splat}', (req, res) => res.sendFile(path.join(clientDist, 'index.html')));
+  const indexHtml = fs.readFileSync(path.join(clientDist, 'index.html'), 'utf8');
+
+  // index: false so every page goes through the handler below
+  app.use(express.static(clientDist, { index: false }));
+
+  // Link previews need absolute URLs, so fill in the site address from the request
+  app.get('/{*splat}', (req, res) => {
+    const siteUrl = `${req.protocol}://${req.get('host')}`;
+    res.type('html').send(indexHtml.replaceAll('__SITE_URL__', siteUrl));
+  });
 }
 
 app.use(errorHandler);
