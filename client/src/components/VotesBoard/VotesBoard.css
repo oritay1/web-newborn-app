@@ -1,10 +1,22 @@
 .votes-board {
   max-width: 900px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0 1rem 2.5rem;
 }
 
 .votes-board__thanks {
+  margin: 0 0 1.25rem;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+}
+
+.votes-board__teams {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.votes-board__error {
+  text-align: center;
+  color: #c62828;
 }

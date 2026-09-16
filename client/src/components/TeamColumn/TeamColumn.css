@@ -1,0 +1,41 @@
+.team-column {
+  flex: 1;
+  min-width: 0;
+  padding: 0.75rem;
+  border-radius: 1.25rem;
+}
+
+.team-column--girl {
+  background: #fff0f5;
+}
+
+.team-column--boy {
+  background: #eef6fd;
+}
+
+.team-column__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.team-column__title {
+  margin: 0.25rem 0 0;
+  font-size: 1.2rem;
+}
+
+.team-column__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.6rem;
+}
+
+.team-column__empty {
+  margin: 1rem 0;
+  text-align: center;
+  opacity: 0.6;
+}

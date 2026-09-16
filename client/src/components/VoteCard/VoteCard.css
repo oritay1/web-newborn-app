@@ -1,0 +1,57 @@
+.vote-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(61 51 70 / 0.08);
+  animation: vote-card-pop 0.35s ease-out;
+}
+
+.vote-card__photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid;
+}
+
+.vote-card--girl .vote-card__photo {
+  border-color: var(--pink);
+}
+
+.vote-card--boy .vote-card__photo {
+  border-color: var(--blue);
+}
+
+.vote-card__relation {
+  max-width: 100%;
+  font-weight: 600;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.vote-card--mine {
+  outline: 2px solid var(--text);
+}
+
+.vote-card__badge {
+  position: absolute;
+  top: 0.4rem;
+  inset-inline-start: 0.4rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background: var(--text);
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+@keyframes vote-card-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
