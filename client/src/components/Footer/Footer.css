@@ -1,0 +1,19 @@
+.footer {
+  padding: 1rem 1rem 1.5rem;
+  text-align: center;
+}
+
+.footer__link {
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 0.8rem;
+  color: var(--text);
+  opacity: 0.45;
+  cursor: pointer;
+}
+
+.footer__link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}

@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { Vote, GUESSES } from '../models/vote.model.js';
 import { HttpError } from '../middlewares/errorHandler.js';
 
@@ -32,4 +33,15 @@ export async function getAllVotes(currentVoterId) {
     createdAt,
     isMine: voterId === currentVoterId,
   }));
+}
+
+export async function deleteVote(id) {
+  if (!mongoose.isValidObjectId(id) || !(await Vote.findByIdAndDelete(id))) {
+    throw new HttpError(404, 'Vote not found');
+  }
+}
+
+export async function deleteAllVotes() {
+  const { deletedCount } = await Vote.deleteMany({});
+  return deletedCount;
 }

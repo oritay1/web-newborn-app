@@ -11,6 +11,9 @@ const clientDist = path.resolve(__dirname, '../../client/dist');
 
 const app = express();
 
+// Hosting platforms like Render sit behind a proxy - needed to see the real client IP
+if (env.isProduction) app.set('trust proxy', 1);
+
 if (env.clientOrigin) app.use(cors({ origin: env.clientOrigin }));
 app.use(express.json({ limit: '2mb' }));
 

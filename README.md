@@ -34,7 +34,22 @@ npm run dev:client                    # http://localhost:5173 (proxies /api to t
 | GET | `/api/health` | health check |
 | GET | `/api/votes/status/:voterId` | has this voter voted |
 | POST | `/api/votes` | create a vote `{ voterId, relation, photo, guess }` |
-| GET | `/api/votes` | all votes (needs an `x-voter-id` header of someone who already voted) |
+| GET | `/api/votes` | all votes (needs an `x-voter-id` header of someone who already voted, or an admin token) |
+| POST | `/api/admin/login` | `{ username, password }` → `{ token }` |
+| GET | `/api/admin/session` | checks the admin token |
+| DELETE | `/api/votes/:id` | delete one vote (admin) |
+| DELETE | `/api/votes` | delete all votes (admin) |
+
+Admin requests send `Authorization: Bearer <token>`.
+
+## Environment variables (server/.env)
+
+| Name | Description |
+| --- | --- |
+| `MONGODB_URI` | MongoDB connection string |
+| `PORT` | server port (default 4000) |
+| `ADMIN_USERNAME` / `ADMIN_PASSWORD` | admin login - use a strong password in production |
+| `ADMIN_TOKEN_SECRET` | long random string used to sign admin tokens |
 
 ## Production
 

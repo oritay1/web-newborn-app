@@ -55,3 +55,22 @@
     transform: scale(0.85);
   }
 }
+
+.vote-card__delete {
+  position: absolute;
+  top: 0.35rem;
+  inset-inline-end: 0.35rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: none;
+  border-radius: 50%;
+  background: #fdecea;
+  color: #c62828;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.vote-card__delete:hover {
+  background: #e53935;
+  color: #fff;
+}
