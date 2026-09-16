@@ -2,7 +2,7 @@ import TeddyBear from '../TeddyBear/TeddyBear.jsx'
 import VoteCard from '../VoteCard/VoteCard.jsx'
 import './TeamColumn.css'
 
-function TeamColumn({ team, votes }) {
+function TeamColumn({ team, votes, onDeleteVote }) {
   return (
     <section className={`team-column team-column--${team.guess}`}>
       <header className="team-column__header">
@@ -14,7 +14,7 @@ function TeamColumn({ team, votes }) {
       ) : (
         <ul className="team-column__list">
           {votes.map((vote) => (
-            <VoteCard key={vote.id} vote={vote} />
+            <VoteCard key={vote.id} vote={vote} onDelete={onDeleteVote} />
           ))}
         </ul>
       )}
