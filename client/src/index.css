@@ -1,0 +1,22 @@
+:root {
+  --pink: #f7a8c4;
+  --pink-dark: #e0578a;
+  --blue: #9ccbf2;
+  --blue-dark: #3a8ad6;
+  --bg: #fffaf5;
+  --text: #3d3346;
+
+  font-family: 'Rubik', system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+}
