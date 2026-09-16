@@ -1,0 +1,56 @@
+.score-bar {
+  margin-bottom: 1.25rem;
+}
+
+.score-bar__counts {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+
+.score-bar__count {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.score-bar__count--girl {
+  color: var(--pink-dark);
+}
+
+.score-bar__count--boy {
+  color: var(--blue-dark);
+}
+
+.score-bar__total {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.score-bar__track {
+  display: flex;
+  height: 2rem;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--blue);
+}
+
+.score-bar__fill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.score-bar__fill--girl {
+  background: var(--pink-dark);
+  transition: width 0.6s ease;
+}
+
+.score-bar__fill--boy {
+  flex: 1;
+  background: var(--blue-dark);
+}

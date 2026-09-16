@@ -21,6 +21,15 @@ export async function hasVoted(voterId) {
   return Boolean(await Vote.exists({ voterId }));
 }
 
-export async function getAllVotes() {
-  return Vote.find({}, { voterId: 0 }).sort({ createdAt: 1 }).lean();
+// voterIds are never sent to the client, only whether each vote belongs to the current viewer
+export async function getAllVotes(currentVoterId) {
+  const votes = await Vote.find().sort({ createdAt: 1 }).lean();
+  return votes.map(({ _id, voterId, relation, photo, guess, createdAt }) => ({
+    id: _id,
+    relation,
+    photo,
+    guess,
+    createdAt,
+    isMine: voterId === currentVoterId,
+  }));
 }

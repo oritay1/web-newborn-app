@@ -17,5 +17,5 @@ export async function getAllVotes(req, res) {
   if (!voterId || !(await voteService.hasVoted(voterId))) {
     throw new HttpError(403, 'Vote first to see the results');
   }
-  res.json(await voteService.getAllVotes());
+  res.json(await voteService.getAllVotes(voterId));
 }
