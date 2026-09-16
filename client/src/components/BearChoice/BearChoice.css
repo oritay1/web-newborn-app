@@ -1,0 +1,21 @@
+.bear-choice {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.bear-choice__option {
+  flex: 1;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.bear-choice__option--girl {
+  background: var(--pink);
+}
+
+.bear-choice__option--boy {
+  background: var(--blue);
+}
