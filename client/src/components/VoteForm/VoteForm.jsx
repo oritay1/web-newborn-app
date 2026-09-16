@@ -5,7 +5,7 @@ import RelationInput from '../RelationInput/RelationInput.jsx'
 import BearChoice from '../BearChoice/BearChoice.jsx'
 import './VoteForm.css'
 
-function VoteForm({ onVoted }) {
+function VoteForm({ onVoted, onVotingClosed }) {
   const [photo, setPhoto] = useState('')
   const [relation, setRelation] = useState('')
   const [guess, setGuess] = useState('')
@@ -27,6 +27,8 @@ function VoteForm({ onVoted }) {
     } catch (err) {
       // Already voted from this browser - just move on to the board
       if (err.status === 409) return onVoted()
+      // The admin revealed the result while this form was open
+      if (err.status === 403) return onVotingClosed()
       setError('משהו השתבש, נסו שוב')
       setSubmitting(false)
     }

@@ -39,3 +39,7 @@
   text-align: center;
   opacity: 0.6;
 }
+
+.team-column--winner {
+  box-shadow: 0 0 0 3px #ffc107;
+}

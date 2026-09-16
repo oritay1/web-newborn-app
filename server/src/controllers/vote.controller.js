@@ -1,5 +1,6 @@
 import * as voteService from '../services/vote.service.js';
 import { HttpError } from '../middlewares/errorHandler.js';
+import { isRevealed } from '../services/reveal.service.js';
 
 export async function createVote(req, res) {
   const vote = await voteService.createVote(req.body);
@@ -11,10 +12,10 @@ export async function getVoteStatus(req, res) {
   res.json({ voted });
 }
 
-// Votes are visible only to the admin and to participants who already voted
+// Votes are visible to the admin, to participants who already voted, and to everyone after the reveal
 export async function getAllVotes(req, res) {
   const voterId = req.get('x-voter-id');
-  const canView = req.isAdmin || (voterId && (await voteService.hasVoted(voterId)));
+  const canView = req.isAdmin || (voterId && (await voteService.hasVoted(voterId))) || (await isRevealed());
   if (!canView) {
     throw new HttpError(403, 'Vote first to see the results');
   }

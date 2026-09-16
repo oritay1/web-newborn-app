@@ -81,3 +81,20 @@
   background: #e53935;
   color: #fff;
 }
+
+.vote-card__winner {
+  position: absolute;
+  bottom: 2.1rem;
+  inset-inline-end: calc(50% - 3rem);
+  font-size: 1.4rem;
+  animation: vote-card-pop 0.5s ease-out;
+}
+
+.vote-card--correct {
+  box-shadow: 0 0 0 3px #ffc107, 0 4px 14px rgb(255 193 7 / 0.35);
+}
+
+.vote-card--wrong {
+  opacity: 0.55;
+  filter: grayscale(0.6);
+}

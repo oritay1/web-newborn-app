@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { Vote, GUESSES } from '../models/vote.model.js';
 import { HttpError } from '../middlewares/errorHandler.js';
+import { isRevealed } from './reveal.service.js';
 
 const MAX_PHOTO_LENGTH = 500_000;
 
@@ -16,6 +17,9 @@ export async function createVote({ voterId, relation, photo, guess }) {
   }
   if (await Vote.exists({ voterId })) {
     throw new HttpError(409, 'Already voted');
+  }
+  if (await isRevealed()) {
+    throw new HttpError(403, 'Voting is closed');
   }
   return Vote.create({ voterId, relation, photo: photo || undefined, guess });
 }
