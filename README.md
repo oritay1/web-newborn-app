@@ -39,6 +39,9 @@ npm run dev:client                    # http://localhost:5173 (proxies /api to t
 | GET | `/api/admin/session` | checks the admin token |
 | DELETE | `/api/votes/:id` | delete one vote (admin) |
 | DELETE | `/api/votes` | delete all votes (admin) |
+| GET | `/api/reveal` | `{ result: 'girl' \| 'boy' \| null, revealedAt }` |
+| PUT | `/api/reveal` | reveal the result `{ result }` (admin) - closes voting |
+| DELETE | `/api/reveal` | undo the reveal (admin) |
 
 Admin requests send `Authorization: Bearer <token>`.
 

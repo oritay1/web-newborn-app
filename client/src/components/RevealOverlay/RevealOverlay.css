@@ -1,0 +1,89 @@
+.reveal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: reveal-fade-in 0.4s ease-out;
+}
+
+.reveal-overlay--girl {
+  background: radial-gradient(circle, #fff0f5 0%, #f7a8c4 100%);
+}
+
+.reveal-overlay--boy {
+  background: radial-gradient(circle, #eef6fd 0%, #9ccbf2 100%);
+}
+
+.reveal-overlay__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.reveal-overlay__bear {
+  animation: reveal-bear-pop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.reveal-overlay__title {
+  margin: 1rem 0 2rem;
+  font-size: clamp(3rem, 16vw, 6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  animation: reveal-title-in 0.6s 0.5s ease-out both;
+}
+
+.reveal-overlay--girl .reveal-overlay__title {
+  color: var(--pink-dark);
+}
+
+.reveal-overlay--boy .reveal-overlay__title {
+  color: var(--blue-dark);
+}
+
+.reveal-overlay__close {
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--text);
+  color: #fff;
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  animation: reveal-title-in 0.5s 1.2s ease-out both;
+}
+
+@keyframes reveal-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes reveal-bear-pop {
+  0% {
+    transform: scale(0) rotate(-30deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes reveal-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-overlay,
+  .reveal-overlay__bear,
+  .reveal-overlay__title,
+  .reveal-overlay__close {
+    animation: none;
+  }
+}
