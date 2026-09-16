@@ -19,6 +19,13 @@
   border: 3px solid;
 }
 
+.vote-card__photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
 .vote-card--girl .vote-card__photo {
   border-color: var(--pink);
 }

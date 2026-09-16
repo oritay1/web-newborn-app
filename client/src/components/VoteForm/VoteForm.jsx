@@ -9,10 +9,12 @@ function VoteForm({ onVoted }) {
   const [photo, setPhoto] = useState('')
   const [relation, setRelation] = useState('')
   const [guess, setGuess] = useState('')
+  const [photoProcessing, setPhotoProcessing] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
 
-  const isValid = photo && relation.trim() && guess
+  // The photo is optional, but don't submit while it is still being processed
+  const isValid = relation.trim() && guess && !photoProcessing
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -20,7 +22,7 @@ function VoteForm({ onVoted }) {
     setSubmitting(true)
     setError('')
     try {
-      await createVote({ photo, relation: relation.trim(), guess })
+      await createVote({ photo: photo || undefined, relation: relation.trim(), guess })
       onVoted()
     } catch (err) {
       // Already voted from this browser - just move on to the board
@@ -32,7 +34,7 @@ function VoteForm({ onVoted }) {
 
   return (
     <form className="vote-form" onSubmit={handleSubmit}>
-      <PhotoUpload value={photo} onChange={setPhoto} />
+      <PhotoUpload value={photo} onChange={setPhoto} onProcessingChange={setPhotoProcessing} />
       <RelationInput value={relation} onChange={setRelation} />
 
       <div className="vote-form__section">

@@ -4,7 +4,9 @@ import { HttpError } from '../middlewares/errorHandler.js';
 
 const MAX_PHOTO_LENGTH = 500_000;
 
+// The photo is optional, but when sent it must be a reasonably sized image
 function isValidPhoto(photo) {
+  if (photo === undefined || photo === null || photo === '') return true;
   return typeof photo === 'string' && photo.startsWith('data:image/') && photo.length <= MAX_PHOTO_LENGTH;
 }
 
@@ -15,7 +17,7 @@ export async function createVote({ voterId, relation, photo, guess }) {
   if (await Vote.exists({ voterId })) {
     throw new HttpError(409, 'Already voted');
   }
-  return Vote.create({ voterId, relation, photo, guess });
+  return Vote.create({ voterId, relation, photo: photo || undefined, guess });
 }
 
 export async function hasVoted(voterId) {

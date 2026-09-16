@@ -39,9 +39,31 @@
   display: none;
 }
 
-.photo-upload__hint {
+.photo-upload__circle--processing {
+  cursor: progress;
+  animation: photo-upload-pulse 1s ease-in-out infinite alternate;
+}
+
+.photo-upload__optional {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.photo-upload__remove {
+  border: none;
+  background: none;
+  font: inherit;
   font-size: 0.85rem;
+  color: var(--text);
   opacity: 0.7;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@keyframes photo-upload-pulse {
+  to {
+    border-color: var(--pink-dark);
+  }
 }
 
 .photo-upload__error {

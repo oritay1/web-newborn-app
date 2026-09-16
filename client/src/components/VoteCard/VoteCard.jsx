@@ -1,4 +1,10 @@
+import TeddyBear from '../TeddyBear/TeddyBear.jsx'
 import './VoteCard.css'
+
+const BEAR_COLORS = {
+  girl: { color: '#f7a8c4', accent: '#fbd3e2' },
+  boy: { color: '#9ccbf2', accent: '#cfe6f9' },
+}
 
 function VoteCard({ vote, onDelete }) {
   function handleDelete() {
@@ -9,7 +15,13 @@ function VoteCard({ vote, onDelete }) {
 
   return (
     <li className={`vote-card vote-card--${vote.guess}${vote.isMine ? ' vote-card--mine' : ''}`}>
-      <img className="vote-card__photo" src={vote.photo} alt={vote.relation} />
+      {vote.photo ? (
+        <img className="vote-card__photo" src={vote.photo} alt={vote.relation} />
+      ) : (
+        <span className="vote-card__photo vote-card__photo--placeholder">
+          <TeddyBear {...BEAR_COLORS[vote.guess]} size={48} />
+        </span>
+      )}
       <span className="vote-card__relation">{vote.relation}</span>
       {vote.isMine && <span className="vote-card__badge">אני</span>}
       {onDelete && (
