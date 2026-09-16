@@ -1,0 +1,47 @@
+.relation-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.relation-input__label {
+  font-weight: 600;
+}
+
+.relation-input__field {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e6dcec;
+  border-radius: 0.75rem;
+  font: inherit;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--text);
+}
+
+.relation-input__field:focus {
+  outline: none;
+  border-color: var(--blue-dark);
+}
+
+.relation-input__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.relation-input__chip {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #e6dcec;
+  border-radius: 999px;
+  background: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.relation-input__chip--active {
+  background: var(--text);
+  border-color: var(--text);
+  color: #fff;
+}
