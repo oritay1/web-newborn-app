@@ -22,26 +22,3 @@
   outline: none;
   border-color: var(--blue-dark);
 }
-
-.relation-input__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.relation-input__chip {
-  padding: 0.3rem 0.8rem;
-  border: 1px solid #e6dcec;
-  border-radius: 999px;
-  background: #fff;
-  font: inherit;
-  font-size: 0.9rem;
-  color: var(--text);
-  cursor: pointer;
-}
-
-.relation-input__chip--active {
-  background: var(--text);
-  border-color: var(--text);
-  color: #fff;
-}
