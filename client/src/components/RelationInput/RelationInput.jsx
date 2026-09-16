@@ -1,7 +1,5 @@
 import './RelationInput.css'
 
-const SUGGESTIONS = ['סבא', 'סבתא', 'דוד', 'דודה', 'חבר', 'חברה']
-
 function RelationInput({ value, onChange }) {
   return (
     <div className="relation-input">
@@ -17,18 +15,6 @@ function RelationInput({ value, onChange }) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
       />
-      <div className="relation-input__chips">
-        {SUGGESTIONS.map((suggestion) => (
-          <button
-            key={suggestion}
-            type="button"
-            className={`relation-input__chip${value === suggestion ? ' relation-input__chip--active' : ''}`}
-            onClick={() => onChange(suggestion)}
-          >
-            {suggestion}
-          </button>
-        ))}
-      </div>
     </div>
   )
 }
