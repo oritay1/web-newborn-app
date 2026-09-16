@@ -1,0 +1,50 @@
+.photo-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.photo-upload__circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px dashed #d9c9e3;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.photo-upload__circle:hover {
+  border-color: var(--pink-dark);
+}
+
+.photo-upload__preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-upload__placeholder {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.photo-upload__input {
+  display: none;
+}
+
+.photo-upload__hint {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.photo-upload__error {
+  font-size: 0.9rem;
+  color: #c62828;
+}

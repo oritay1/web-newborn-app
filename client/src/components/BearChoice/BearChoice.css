@@ -6,16 +6,53 @@
 
 .bear-choice__option {
   flex: 1;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  text-align: center;
-  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  border: 3px solid transparent;
+  border-radius: 1.25rem;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, opacity 0.2s;
 }
 
 .bear-choice__option--girl {
-  background: var(--pink);
+  background: #fff0f5;
 }
 
 .bear-choice__option--boy {
-  background: var(--blue);
+  background: #eef6fd;
+}
+
+.bear-choice__option:hover {
+  transform: translateY(-4px);
+}
+
+/* Dim the other bear once a choice was made */
+.bear-choice:has(.bear-choice__option--selected) .bear-choice__option:not(.bear-choice__option--selected) {
+  opacity: 0.5;
+}
+
+.bear-choice__option--girl.bear-choice__option--selected {
+  border-color: var(--pink-dark);
+  animation: bear-bounce 0.4s;
+}
+
+.bear-choice__option--boy.bear-choice__option--selected {
+  border-color: var(--blue-dark);
+  animation: bear-bounce 0.4s;
+}
+
+.bear-choice__label {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+@keyframes bear-bounce {
+  50% {
+    transform: scale(1.08);
+  }
 }
